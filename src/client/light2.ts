@@ -5,7 +5,7 @@ export class Light2 {
     light: THREE.PointLight
 
     constructor() {
-        this.light = new THREE.PointLight(0xffffff, 2)
-        this.light.position.set(-2.5, 2.5, 2.5)
+        this.light = new THREE.PointLight(0xffffff, 1)
+        this.light.position.set(-9.5, 10, 2.5)
     }
 }

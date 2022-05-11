@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { scene, pickableObjects, intersectedObject, modelReady, animationActions, activeAction, lastAction } from './client'
+import { scene, pickableObjects} from './client'
 
 export class Loader1 {
     main: GLTFLoader
@@ -43,9 +43,9 @@ export class Loader1 {
         this.mixer3 = new THREE.AnimationMixer(scene)
         this.mixer4 = new THREE.AnimationMixer(scene)
         this.mixer5 = new THREE.AnimationMixer(scene)
-        this.main.load('models/skatepark1.glb', (gltf) => {
-            gltf.scene.position.set(0, 1, 0)
-            gltf.scene.rotation.set(Math.PI / 2.2, 0, 0)
+        this.main.load('models/skatepark2small.glb', (gltf) => {
+            gltf.scene.position.set(0, 0, 0)
+            gltf.scene.rotation.set(0, 0, 0)
             this.mixer = new THREE.AnimationMixer(gltf.scene)
             // this.action = this.mixer.clipAction(gltf.animations[0])
             // this.action1 = this.mixer.clipAction(gltf.animations[1])
@@ -70,24 +70,9 @@ export class Loader1 {
                     //store reference to original materials for later
                 }
             })
+            
             scene.add(gltf.scene)
-            this.main.load(
-                'models/deform1.gltf',
-                (gltf2) => {
-                    //this.mixer2 = new THREE.AnimationMixer(gltf.scene)
-                    console.log('loaded number2');
-                    //(gltf as any).animations[0].tracks.shift()
-
-                    // this.mixer = new THREE.AnimationMixer(gltf2.scene)
-                    this.animationaction = this.mixer.clipAction(
-                        gltf2.animations[0]
-                    )
-                    animationActions.push(this.animationaction)
-                    // animationsFolder.add(animations, 'samba')
-                    this.modelready2 = true
-                    //animationActions[1].play()
-                }
-            )
+           
         })
     }
 
