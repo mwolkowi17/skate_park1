@@ -9,7 +9,7 @@ export class Loader1 {
         this.main = new GLTFLoader()
        
       
-        this.main.load('models/skatepark3.glb', (gltf) => {
+        this.main.load('models/SkateParkV3.glb', (gltf) => {
             gltf.scene.position.set(-8, 0, 0)
             gltf.scene.rotation.set(0, 0, 0)
 
