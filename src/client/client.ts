@@ -6,8 +6,6 @@ import { Light2 } from './light2'
 import { Controls1 } from './controls1'
 import { Loader1 } from './loader1'
 
-
-
 export const scene = new THREE.Scene()
 
 const light1 = new Light1()
@@ -27,9 +25,6 @@ const controls1 = new Controls1(camera1.camera, renderer.domElement)
 export const pickableObjects: THREE.Mesh[] = []
 export let intersectedObject: THREE.Object3D | null
 export let modelReady = false
-export const animationActions: THREE.AnimationAction[] = []
-export let activeAction: THREE.AnimationAction
-export let lastAction: THREE.AnimationAction
 
 const loader1 = new Loader1()
 
@@ -44,7 +39,7 @@ function onWindowResize() {
 const raycaster = new THREE.Raycaster()
 let intersects: THREE.Intersection[]
 
-document.addEventListener('mousemove', onDocumentMouseMove, false)
+document.addEventListener('click', onDocumentMouseMove, false)
 function onDocumentMouseMove(event: MouseEvent) {
     raycaster.setFromCamera(
         {
@@ -56,39 +51,9 @@ function onDocumentMouseMove(event: MouseEvent) {
     intersects = raycaster.intersectObjects(pickableObjects, false)
 
     if (intersects.length > 0) {
-        // if (intersects[0].object === pickableObjects[0]) {
-        //     loader1.play1()
-        // }
-        // if (intersects[0].object === pickableObjects[1]) {
-        //     loader1.play2()
-        // }
-        // if (intersects[0].object === pickableObjects[2]) {
-        //     loader1.play3()
-        // }
-        // if (intersects[0].object === pickableObjects[3]) {
-        //     loader1.play4()
-        // }
-        // if (intersects[0].object === pickableObjects[4]) {
-        //     loader1.play5()
-        // }
-        // if (intersects[0].object === pickableObjects[5]) {
-        //     loader1.play6()
-        // }
+// action methods of clickable objects
+            }
 
-    }
-
-}
-
-const setAction = (toAction: THREE.AnimationAction) => {
-    if (toAction != activeAction) {
-        lastAction = activeAction
-        activeAction = toAction
-        //lastAction.stop()
-        lastAction.fadeOut(1)
-        activeAction.reset()
-        activeAction.fadeIn(1)
-        activeAction.play()
-    }
 }
 
 const stats = Stats()
@@ -101,13 +66,7 @@ function animate() {
 
     controls1.main.update()
 
-    if (loader1.modelready2) {
-        loader1.mixer.update(clock.getDelta())
-        
-        if(loader1.mixer.time>4&&loader1.ifaction===false){
-            loader1.mixer.setTime(0)
-        }
-    }
+   
     render()
 
     stats.update()
