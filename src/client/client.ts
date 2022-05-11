@@ -51,8 +51,11 @@ function onDocumentMouseMove(event: MouseEvent) {
     intersects = raycaster.intersectObjects(pickableObjects, false)
 
     if (intersects.length > 0) {
-// action methods of clickable objects
-            }
+        // action methods of clickable objects
+        if (intersects[0].object === pickableObjects[6]) {
+            console.log('hitted14')
+        }
+    }
 
 }
 
@@ -66,7 +69,7 @@ function animate() {
 
     controls1.main.update()
 
-   
+
     render()
 
     stats.update()

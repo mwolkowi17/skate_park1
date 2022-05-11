@@ -22,6 +22,7 @@ export class Loader1 {
             })
             
             scene.add(gltf.scene)
+            console.log(pickableObjects)
            
         })
     }
