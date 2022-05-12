@@ -27,5 +27,13 @@ export class Loader1 {
         })
     }
 
+    methodtest1(){
+        const highlightedMaterial = new THREE.MeshBasicMaterial({
+            wireframe: true,
+            color: 0x00ff00
+        })
+    pickableObjects[6].material=highlightedMaterial        
+    }
+
    
 }
