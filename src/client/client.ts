@@ -52,6 +52,7 @@ function onDocumentMouseMove(event: MouseEvent) {
 
     if (intersects.length > 0) {
         // action methods of clickable objects
+        console.log(intersects[0].object.name)
         if (intersects[0].object === pickableObjects[6]) {
             console.log('hitted14')
             loader1.methodtest1()
