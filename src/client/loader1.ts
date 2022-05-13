@@ -6,6 +6,9 @@ export class Loader1 {
     main: GLTFLoader
    
     constructor() {
+
+        const originalMaterials: { [id: string]: THREE.Material | THREE.Material[] } =
+    {}
         this.main = new GLTFLoader()
        
       
@@ -18,6 +21,7 @@ export class Loader1 {
                     const m = child as THREE.Mesh
                     m.castShadow = true
                     pickableObjects.push(m) 
+                    originalMaterials[m.name] = (m as THREE.Mesh).material
                 }
             })
             
@@ -29,10 +33,13 @@ export class Loader1 {
 
     methodtest1(){
         const highlightedMaterial = new THREE.MeshBasicMaterial({
-            wireframe: true,
-            color: 0x00ff00
+            //wireframe: true,
+            color: 0x0000ff
         })
-    pickableObjects[6].material=highlightedMaterial        
+        
+        const nativeMaterial = pickableObjects[6].material
+       
+           
     }
 
    
