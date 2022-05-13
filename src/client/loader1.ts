@@ -37,7 +37,7 @@ export class Loader1 {
             color: 0x0000ff
         })
         
-        const nativeMaterial = pickableObjects[6].material
+        pickableObjects[6].material= highlightedMaterial
        
            
     }
