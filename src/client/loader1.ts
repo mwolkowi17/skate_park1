@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { scene, pickableObjects, intersectedObject } from './client'
+import { scene, pickableObjects, intersectedObject, intersects } from './client'
 
 let originalMaterials: { [id: string]: THREE.Material | THREE.Material[] } =
     {}
@@ -38,7 +38,10 @@ export class Loader1 {
             color: 0x0000ff
         })
 
+        
+
         pickableObjects.forEach((o: THREE.Mesh, i) => {
+           
             if (intersectedObject && intersectedObject.name === o.name) {
                 pickableObjects[i].material = highlightedMaterial
             } else {

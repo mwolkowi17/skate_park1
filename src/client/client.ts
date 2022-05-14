@@ -37,7 +37,7 @@ function onWindowResize() {
 }
 
 const raycaster = new THREE.Raycaster()
-let intersects: THREE.Intersection[]
+export let intersects: THREE.Intersection[]
 
 document.addEventListener('click', onDocumentMouseMove, false)
 function onDocumentMouseMove(event: MouseEvent) {
@@ -53,11 +53,18 @@ function onDocumentMouseMove(event: MouseEvent) {
     if (intersects.length > 0) {
         // action methods of clickable objects
         console.log(intersects[0].object.name)
+        if (intersects.length > 0) {
+            intersectedObject = intersects[0].object
+        } else {
+            intersectedObject = null
+        }
         if (intersects[0].object === pickableObjects[6]) {
             console.log('hitted14')
             loader1.methodtest1()
         }
     }
+
+    
 
 }
 
