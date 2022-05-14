@@ -4,7 +4,7 @@ import { Camera1 } from './camera1'
 import { Light1 } from './light1'
 import { Light2 } from './light2'
 import { Controls1 } from './controls1'
-import { Loader1 } from './loader1'
+import { Loader1, originalMaterials } from './loader1'
 
 export const scene = new THREE.Scene()
 
@@ -39,6 +39,8 @@ function onWindowResize() {
 const raycaster = new THREE.Raycaster()
 export let intersects: THREE.Intersection[]
 
+
+
 document.addEventListener('click', onDocumentMouseMove, false)
 function onDocumentMouseMove(event: MouseEvent) {
     raycaster.setFromCamera(
@@ -58,10 +60,25 @@ function onDocumentMouseMove(event: MouseEvent) {
         } else {
             intersectedObject = null
         }
-        if (intersects[0].object === pickableObjects[6]) {
-            console.log('hitted14')
-            loader1.methodtest1()
-        }
+       
+
+
+            const highlightedMaterial = new THREE.MeshBasicMaterial({
+                //wireframe: true,
+                color: 0x0000ff
+            })
+    
+            
+    
+            pickableObjects.forEach((o: THREE.Mesh, i) => {
+               
+                if (intersectedObject && intersectedObject.name === o.name) {
+                    pickableObjects[i].material = highlightedMaterial
+                } else {
+                    pickableObjects[i].material = originalMaterials[o.name]
+                }
+            })
+        
     }
 
     
