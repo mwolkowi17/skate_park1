@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { scene, pickableObjects} from './client'
+
 let   originalMaterials: { [id: string]: THREE.Material | THREE.Material[] } =
 {}
 export class Loader1 {
