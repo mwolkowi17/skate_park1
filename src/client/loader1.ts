@@ -10,6 +10,7 @@ import {
 export let originalMaterials: {
   [id: string]: THREE.Material | THREE.Material[];
 } = {};
+
 export class Loader1 {
   main: GLTFLoader;
 
